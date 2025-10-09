@@ -1,4 +1,4 @@
-// OWNERSHIP 
+//---------------------------------------------------------------OWNERSHIP-------------------------------------------------------- 
     // 1. Each value in Rust has a variable that’s called its owner.
     // 2. There can only be one owner at a time. 
     // 3. When the owner goes out of scope, the value will be dropped.
@@ -14,7 +14,7 @@ fn main() {
 
 // Prevents Use After Free Errors at Compile Time, doublefree errors, dangling pointers. 
 
-//----------------------------------------Borrowing--------------------------------------------------------------------------------
+//--------------------------------------------------------------Borrowing------------------------------------------------------------
 // We can use references to let multiple variables access the same data without taking ownership of it. 
 // Rust allows you to borrow data immutably or mutably, but with strict rules. 
 
@@ -35,3 +35,21 @@ fn print_string(s : &mut String) {
 // Here only one mutable reference is allowed at a time. (SIMILAR TO READ AND WRITE ACCESS) 
 
 //Borrowing feature is helpful when it comes to multiple reads and exclusive writes without requiring locks and semaphores.
+
+
+//------------------------------------------------------------Lifetimes--------------------------------------------------------------
+
+//Ownership and borrowing cover the who and how of data usage, but not the when.
+//Lifetimes are a way to ensure that references are valid as long as they are used 
+
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
+} 
+
+// Here 'a is a lifetime parameter that tells the compiler that the returned reference will live as long as both input references.
+
+//Lifetimes become especially important in structs with references , trait implementations , and function return values  that involve borrowed data.
