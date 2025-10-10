@@ -53,3 +53,6 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
 // Here 'a is a lifetime parameter that tells the compiler that the returned reference will live as long as both input references.
 
 //Lifetimes become especially important in structs with references , trait implementations , and function return values  that involve borrowed data.
+
+
+//------------------------------------------------------Traits----------------------------------------------------------------------
