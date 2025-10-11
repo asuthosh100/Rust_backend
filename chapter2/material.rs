@@ -56,3 +56,38 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
 
 
 //------------------------------------------------------Traits----------------------------------------------------------------------
+
+// Key feature of Rust's type system that enables polymorphism and code reuse.
+
+// Basically a trait for a type. For example, we can define a trait called Summary that requires a summarize method.
+// and then implement that trait for different types like NewsArticle and Tweet.
+
+pub struct NewsArticle {
+    pub author: String,
+    pub headline: String,
+    pub content: String,
+}
+
+impl Summary for NewsArticle {
+    fn summarize(&self) -> String {
+        format!("{}, by {}", self.headline, self.author)
+    }
+}
+impl Summary for Tweet {
+    fn summarize(&self) -> String {
+        format!("{}: {}", self.username, self.content)
+    }
+}
+
+pub struct Tweet {
+    pub username: String,
+    pub content: String,
+    pub reply: bool,
+    pub retweet: bool,
+}
+
+pub trait Summary {
+    fn summarize(&self) -> String;
+}
+
+// Use cases of traits include defining shared behavior across different types, enabling polymorphism, and creating abstractions that can work with any type that implements a specific trait.
