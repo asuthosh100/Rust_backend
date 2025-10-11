@@ -91,3 +91,21 @@ pub trait Summary {
 }
 
 // Use cases of traits include defining shared behavior across different types, enabling polymorphism, and creating abstractions that can work with any type that implements a specific trait.
+
+
+//------------------------------------------------------ENUM and Pattern Matching------------------------------------------------------------
+
+
+// Enum lets you define a type by enumerating its possible variants.
+
+// Rust enums can store data with each variant — something impossible in plain C.
+
+
+enum Message {
+    Quit,                       // no data
+    Move { x: i32, y: i32 },    // struct-like
+    Write(String),              // tuple-like
+    ChangeColor(u8, u8, u8),    // multiple values
+}
+
+// Pattern matching is extensively used with enums to execute different code based on the variant.
