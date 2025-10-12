@@ -39,12 +39,33 @@
 // it just knows the animal can .speak().
 // That’s polymorphism!
 
+use std::collections::HashMap; 
+use std::sync::Mutex; 
 
 trait Metrics {
     fn record(&self, metric: &str, value: f64);
 }
 
+// We cannot mutate and immutable reference, eg &self. But traits require &self for their method. Hence we use Mutex for interior mutability. 
 struct ConsoleMetrics; 
+
+struct MemoryMetrics {
+    data : Mutex<HashMap<String, f64>>,
+}
+
+impl MemoryMetrics {
+    fn new() -> Self {
+        MemoryMetrics {
+            data: Mutex::new(HashMap::new()),
+        }
+    }
+}
+impl Metrics for MemoryMetrics {
+    fn record(&self, metric: &str, value: f64) {
+        let mut map = self.data.lock().unwrap(); // lock the mutex to get access
+        map.insert(metric.to_string(), value);   // insert or overwrite the value
+    }
+}
 
 impl Metrics for ConsoleMetrics {
     fn record(&self, metric: &str, value: f64) {
@@ -64,6 +85,8 @@ fn run_metrics_demo(metrics : &dyn Metrics) {
 
 fn main() {
     let conmet = ConsoleMetrics; 
+    let memet = MemoryMetrics::new(); 
 
     run_metrics_demo(&conmet);
+    run_metrics_demo(&memet);
 }
