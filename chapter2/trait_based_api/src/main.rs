@@ -48,13 +48,17 @@ struct ConsoleMetrics;
 
 impl Metrics for ConsoleMetrics {
     fn record(&self, metric: &str, value: f64) {
+     println!("Metric recorded → {} = {}", metric, value);
 
     }
 }
 
 
 fn run_metrics_demo(metrics : &dyn Metrics) {
-    metrics.record(); 
+    metrics.record("logins", 1.0);
+    metrics.record("errors", 0.0);
+    metrics.record("views", 42.0);
+
 }
 
 
