@@ -1,0 +1,1 @@
+/Users/asu/Desktop/Rust_backend/chapter2/lifetime_limited_borrowed_data/target/debug/lifetime_limited_borrowed_data: /Users/asu/Desktop/Rust_backend/chapter2/lifetime_limited_borrowed_data/src/main.rs
