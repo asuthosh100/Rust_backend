@@ -1,0 +1,1 @@
+/Users/asu/Desktop/Rust_backend/user_service/target/debug/api: /Users/asu/Desktop/Rust_backend/user_service/crates/api/src/handler.rs /Users/asu/Desktop/Rust_backend/user_service/crates/api/src/main.rs /Users/asu/Desktop/Rust_backend/user_service/crates/domain/src/lib.rs /Users/asu/Desktop/Rust_backend/user_service/crates/infrastructure/src/lib.rs
